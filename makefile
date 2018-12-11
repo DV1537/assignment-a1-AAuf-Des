@@ -1,2 +1,2 @@
 TestRule: main.cpp
-	g++ main.cpp -o program.exe
+	g++ main.cpp declarations.h definitions.cpp -o program.exe
