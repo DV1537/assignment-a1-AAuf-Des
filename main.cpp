@@ -13,8 +13,6 @@ int main(int argc, const char * argv[])
     bool validFile;
 	int * arr = new int[arrCap];
 
-
-
 	validFile = checkIfValid(file);
 
 	if (validFile == false) {

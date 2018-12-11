@@ -7,6 +7,8 @@ bool checkIfValid(string file);
 
 bool checkForEmpty(string file);
 
+bool checkForOnlySpace(string file);
+
 void printArr(int arr[], int cap);
 
 int getSum(int arr[], int cap);
