@@ -4,6 +4,8 @@
 #include "declarations.h"
 using namespace std;
 
+//.\program.exe ./tests/input.in
+
 int main(int argc, const char * argv[])
 {
     const string file = argv[1];

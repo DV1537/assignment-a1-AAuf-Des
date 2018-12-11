@@ -15,7 +15,7 @@ bool checkIfValid(string file){
 
 	while (myReadFile >> num && isValid == true)
 	{
-		if (isdigit(num)) {
+		if (isdigit(num) || num == '-') {
 			isValid = true;
 		}
 		else {
