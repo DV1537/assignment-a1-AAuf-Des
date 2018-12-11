@@ -20,8 +20,7 @@ bool checkIfValid(string file){
 			isValid = false;
 		}
 	}
-
-
+	
 	myReadFile.close();
 
 	return isValid;
@@ -57,7 +56,8 @@ void printAboveAverage(int arr[], double average, int cap) {
 	cout << "numbers above average are: " << endl;
 	for (int i = 0; i < cap; i++) {
 		if (arr[i] > average) {
-			cout << arr[i] << endl;
+			cout << arr[i] << ", ";
 		}
 	}
+	cout << endl;
 }
