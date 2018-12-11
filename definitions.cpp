@@ -11,6 +11,12 @@ bool checkIfValid(string file){
 	ifstream myReadFile;
 	myReadFile.open(file);
 
+	isValid = checkForEmpty(file);
+
+	if (isValid == false){
+		cout << "file has no letters or numbers!" << endl;
+	}
+
 	while (myReadFile >> num && isValid == true)
 	{
 		if (isdigit(num)) {
@@ -21,6 +27,23 @@ bool checkIfValid(string file){
 		}
 	}
 	
+	myReadFile.close();
+
+	return isValid;
+}
+
+bool checkForEmpty(string file){
+	ifstream myReadFile;
+	string str;
+	bool isValid = true;
+	myReadFile.open(file);
+
+	getline(myReadFile, str);
+
+	if (str.size() == 0){
+		isValid = false;
+	}
+
 	myReadFile.close();
 
 	return isValid;
