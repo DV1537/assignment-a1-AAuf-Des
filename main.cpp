@@ -16,6 +16,7 @@ int main(int argc, const char * argv[])
 	int * arr = new int[arrCap];
 
 	validFile = checkIfValid(file);
+	validFile = checkForFewNums(file);
 
 	if (validFile == false) {
 		cout << "file error: invalid file" << endl;

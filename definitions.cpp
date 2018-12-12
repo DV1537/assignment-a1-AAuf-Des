@@ -43,9 +43,7 @@ bool checkForEmpty(string file){
 		haveContent = false;
 		isValid = false;
 	}
-
-
-	 
+	
 	if (haveContent != false){
 		for (int i = 0; i < str.size() && haveLetters == false; i++){
 			if (str[i] != ' '){
@@ -57,6 +55,35 @@ bool checkForEmpty(string file){
 
 	myReadFile.close();
 
+	return isValid;
+}
+
+bool checkForFewNums(string file){
+	ifstream myFile;
+	bool isValid = true;
+	int x;
+	int count = 0;
+
+	myFile.open(file);
+
+	while (!(myFile.eof())){
+		myFile >> x;
+		count ++;
+	}
+
+	cout << "amount of numbers in file: " << count << endl;
+
+	if (count == 1){
+		isValid = false;
+	}
+	else if (count != 1){
+		isValid = true;
+	}
+	else{
+		cout << "error" << endl;
+	}
+
+	myFile.close();
 	return isValid;
 }
 
