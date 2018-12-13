@@ -4,6 +4,8 @@
 #include "declarations.h"
 using namespace std;
 
+//final commit//
+
 //checks all criterias for the file to be valid.
 bool checkIfValid(string file){
     bool isValid;
