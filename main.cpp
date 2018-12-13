@@ -8,7 +8,6 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-    //const string file = argv[1];
     int num = 0;
 	int index = 0; 
 	int arrCap = 1;
