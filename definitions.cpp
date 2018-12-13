@@ -7,22 +7,47 @@ using namespace std;
 //checks all criterias for the file to be valid.
 bool checkIfValid(string file){
     bool isValid;
+	bool fileExist;
 
-	isValid = checkForEmpty(file);
+	fileExist = checkIfFileExist(file);
 
-	if (isValid == true){
-		isValid = checkForCharacters(file);
+	if (fileExist == true){
+		isValid = checkForEmpty(file);
+
+		if (isValid == true){
+			isValid = checkForCharacters(file);
+		}
+
+		if (isValid == true){
+			isValid = checkForMultipleLines(file);
+		}
+
+		if (isValid == true){
+			isValid = checkForFewNums(file);
+		}
 	}
-
-	if (isValid == true){
-		isValid = checkForMultipleLines(file);
-	}
-
-	if (isValid == true){
-		isValid = checkForFewNums(file);
+	else{
+		isValid = false;
 	}
 
 	return isValid;
+}
+//checks so that file exist i.e. that argv is correct.
+bool checkIfFileExist(string file){
+	string str;
+	bool fileExist;
+
+    ifstream myFile(file);
+    if (myFile.fail()){
+        cout << "error: " << file << " does not exist." << endl;
+		fileExist = false;
+    }
+    else{
+		
+        fileExist = true;
+    }
+    myFile.close();
+    return fileExist;
 }
 
 //checks for completly empty file.
@@ -119,16 +144,6 @@ bool checkForCharacters(string file){
 	return isValid;
 }
 
-
-void printArr(int arr[], int cap) {
-	cout << "the numbers in the file are: " << endl;
-
-	for (int i = 0; i <cap; i++) {
-		cout << arr[i] << ", ";
-	}
-	cout << endl;
-}
-
 int getSum(int arr[], int cap) {
 	int sum = 0;
 	for (int i = 0; i < cap; i++) {
@@ -147,10 +162,9 @@ double getAverage(int sum, int cap) {
 }
 
 void printAboveAverage(int arr[], double average, int cap) {
-	cout << "numbers above average are: " << endl;
 	for (int i = 0; i < cap; i++) {
 		if (arr[i] > average) {
-			cout << arr[i] << ", ";
+			cout << arr[i] << " ";
 		}
 	}
 	cout << endl;

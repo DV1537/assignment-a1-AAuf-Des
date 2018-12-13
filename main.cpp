@@ -8,14 +8,14 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-    const string file = argv[1];
+    //const string file = argv[1];
     int num = 0;
 	int index = 0; 
 	int arrCap = 1;
     bool validFile;
 	int * arr = new int[arrCap];
 
-	validFile = checkIfValid(file);
+	validFile = checkIfValid(argv[1]);
 
 	if(validFile == false){
 		cout << "invalid file" << endl;
@@ -24,7 +24,7 @@ int main(int argc, const char * argv[])
     if (validFile == true){
 
 	    ifstream myReadFile;
-	    myReadFile.open(file);
+	    myReadFile.open(argv[1]);
 
 	    while (myReadFile >> num)
 	    {
@@ -43,16 +43,9 @@ int main(int argc, const char * argv[])
 		    arr[index] = num;
 		    index++;
 	    }
-	    //printar alla nummer i filen.
-	    printArr(arr, arrCap);
-
 	    int sum = getSum(arr, arrCap);
 	
 	    double average = getAverage(sum, arrCap);
-	
-	    cout << endl << "sum: " << sum << endl;
-	    cout << "amount of numbers: " << arrCap << endl;
-	    cout << "average: " << average << endl << endl;
 
 	    printAboveAverage(arr, average, arrCap);
 
