@@ -4,8 +4,6 @@
 #include "declarations.h"
 using namespace std;
 
-//.\program.exe ./tests/input.in
-
 int main(int argc, const char * argv[])
 {
     int num = 0;

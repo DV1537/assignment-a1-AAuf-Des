@@ -73,12 +73,12 @@ bool checkForEmpty(string file){
 bool checkForMultipleLines(string file){
 	string str;
 	bool isValid = true;
-    ifstream myfile;
+    ifstream myFile;
     int count = 0;
 
-    myfile.open(file);
-    while (!(myfile.eof())){
-        getline(myfile, str);
+    myFile.open(file);
+    while (!(myFile.eof())){
+        getline(myFile, str);
         count++;
     }
     
@@ -89,7 +89,7 @@ bool checkForMultipleLines(string file){
 	else{
 		isValid = true;
 	}
-    myfile.close();
+    myFile.close();
 
     return isValid;
 }
