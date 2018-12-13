@@ -7,9 +7,14 @@ bool checkIfValid(string file);
 
 bool checkForEmpty(string file);
 
+bool checkForMultipleLines(string file);
+
+bool checkForOnlySpaces(string file);
+
 bool checkForFewNums(string file);
 
-bool checkForOnlySpace(string file);
+bool checkForCharacters(string file);
+
 
 void printArr(int arr[], int cap);
 

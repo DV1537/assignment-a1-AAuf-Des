@@ -4,53 +4,39 @@
 #include "declarations.h"
 using namespace std;
 
+//checks all criterias for the file to be valid.
 bool checkIfValid(string file){
-    char num;
-	bool isValid = true;
-
-	ifstream myReadFile;
-	myReadFile.open(file);
+    bool isValid;
 
 	isValid = checkForEmpty(file);
 
-	while (myReadFile >> num && isValid == true)
-	{
-		if (isdigit(num) || num == '-') {
-			isValid = true;
-		}
-		else {
-			isValid = false;
-		}
+	if (isValid == true){
+		isValid = checkForCharacters(file);
 	}
-	
-	myReadFile.close();
 
+	if (isValid == true){
+		isValid = checkForMultipleLines(file);
+	}
+
+	if (isValid == true){
+		isValid = checkForFewNums(file);
+	}
 
 	return isValid;
 }
-//checks so that the file contains anything. 
+
+//checks for completly empty file.
 bool checkForEmpty(string file){
 	ifstream myReadFile;
 	string str;
-	bool haveContent = true;
-	bool haveLetters = false;
-	bool isValid;
+	bool isValid = true;
 	myReadFile.open(file);
 
 	getline(myReadFile, str);
 
 	if (str.size() == 0){
-		haveContent = false;
 		isValid = false;
-	}
-	
-	if (haveContent != false){
-		for (int i = 0; i < str.size() && haveLetters == false; i++){
-			if (str[i] != ' '){
-				haveLetters = true;
-				isValid = true;
-			}
-		}
+		cout << "Error: file contains nothing." << endl;
 	}
 
 	myReadFile.close();
@@ -58,6 +44,34 @@ bool checkForEmpty(string file){
 	return isValid;
 }
 
+// check if inputfile have more than 1 line.
+bool checkForMultipleLines(string file){
+	string str;
+	bool isValid = true;
+    ifstream myfile;
+    int count = 0;
+
+    myfile.open(file);
+    while (!(myfile.eof())){
+        getline(myfile, str);
+        count++;
+    }
+    
+	if (count > 1){
+		isValid = false;
+		cout << "error: the file contains to many lines." << endl;
+	}
+	else{
+		isValid = true;
+	}
+    myfile.close();
+
+    return isValid;
+}
+
+
+
+//checks file so that is contains more than 1 characters. 
 bool checkForFewNums(string file){
 	ifstream myFile;
 	bool isValid = true;
@@ -71,21 +85,40 @@ bool checkForFewNums(string file){
 		count ++;
 	}
 
-	cout << "amount of numbers in file: " << count << endl;
-
-	if (count == 1){
+	if (count <= 1){
 		isValid = false;
+		cout << "error: the files contains to few numbers." << endl;
 	}
-	else if (count != 1){
+	else if (count > 1){
 		isValid = true;
 	}
-	else{
-		cout << "error" << endl;
-	}
-
+	
 	myFile.close();
 	return isValid;
 }
+//check file so that it does not contain any chars other than space or " - "
+bool checkForCharacters(string file){
+	char num;
+	bool isValid = true;
+
+	ifstream myReadFile;
+	myReadFile.open(file);
+
+	while (myReadFile >> num && isValid == true)
+	{
+		if (isdigit(num) || num == '-') {
+			isValid = true;
+		}
+		else {
+			isValid = false;
+			cout << "error: file contains characters" << endl;
+		}
+	}
+	
+	myReadFile.close();
+	return isValid;
+}
+
 
 void printArr(int arr[], int cap) {
 	cout << "the numbers in the file are: " << endl;

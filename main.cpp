@@ -16,11 +16,11 @@ int main(int argc, const char * argv[])
 	int * arr = new int[arrCap];
 
 	validFile = checkIfValid(file);
-	validFile = checkForFewNums(file);
 
-	if (validFile == false) {
-		cout << "file error: invalid file" << endl;
+	if(validFile == false){
+		cout << "invalid file" << endl;
 	}
+
     if (validFile == true){
 
 	    ifstream myReadFile;
@@ -39,7 +39,6 @@ int main(int argc, const char * argv[])
 			    delete[] arr;
 			    arr = nullptr;
 			    arr = tempArr;
-
 		    }
 		    arr[index] = num;
 		    index++;
@@ -59,7 +58,6 @@ int main(int argc, const char * argv[])
 
 	    delete[] arr;
 	    arr = nullptr;
-        system("pause");
     }
 	return 0;
 }
